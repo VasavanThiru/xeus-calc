@@ -29,8 +29,6 @@ namespace xeus_calc
         const std::string ops = "-+/*^";
         std::stringstream ss;
 
-        ss << " RPN = ";
-
         std::stack<int> s;
 
         std::stringstream input(spaced_infix);
@@ -86,19 +84,19 @@ namespace xeus_calc
             ss << ops[s.top()] << ' ';
             s.pop();
         }
-        publish_stream("stdout", ss.str());
+        publish_stream("stdout", "RPN = " + ss.str());
         return ss.str();
     }
 
     double interpreter::compute_rpn(const std::string &expr)
     {
+        publish_stream("stdout", "\nInput\tOperation\tStack after\n");
         std::istringstream iss(expr);
         std::vector<double> stack;
-        publish_stream("stdout", "Input\tOperation\tStack after");
         std::string token;
         while (iss >> token)
         {
-            publish_stream("stdout", token);
+            publish_stream("stdout", token + "\t");
             double tokenNum;
             if (std::istringstream(token) >> tokenNum)
             {
@@ -130,7 +128,7 @@ namespace xeus_calc
             }
             std::stringstream ss;
             std::copy(stack.begin(), stack.end(), std::ostream_iterator<double>(ss, " "));
-            publish_stream("stdout", ss.str());
+            publish_stream("stdout",  ss.str()+ "\n");
         }
         return stack.back();
     }
