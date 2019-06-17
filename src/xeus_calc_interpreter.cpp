@@ -7,7 +7,25 @@
 
 namespace xeus_calc
 {
-    std::string interpreter::parse_rpn(const std::string& infix) {
+    std::string interpreter::parse_rpn(const std::string& infix)
+    {
+        std::string operators = "-+/*^()";
+        std::string spaced_infix;
+        for (const char& itr : infix)
+        {
+            size_t op = operators.find(itr);
+            if(op != std::string::npos)
+            {
+                spaced_infix += ' ';
+                spaced_infix += itr;
+                spaced_infix += ' ';
+            }
+            else
+            {
+                spaced_infix += itr;
+            }
+        }
+
         const std::string ops = "-+/*^";
         std::stringstream ss;
 
@@ -15,7 +33,7 @@ namespace xeus_calc
 
         std::stack<int> s;
 
-        std::stringstream input(infix);
+        std::stringstream input(spaced_infix);
         std::string token;
         while (std::getline(input, token, ' '))
         {
