@@ -7,3 +7,4 @@ dependencies:
   - xtl=0.6.4
   - nlohmann_json=3.6.1
   - openssl=1.1.1b
+  - cmake
