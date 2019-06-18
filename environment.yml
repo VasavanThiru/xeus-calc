@@ -5,5 +5,6 @@ dependencies:
   - xeus=0.19.2
   - cppzmq=4.3.0
   - xtl=0.6.4
+  - openssl=1.0.1
   - nlohmann_json=3.6.1
-  - openssl=1.1.1b
+  - cmake
