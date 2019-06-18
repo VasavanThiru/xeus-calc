@@ -3,7 +3,6 @@ channels:
   - conda-forge
 dependencies:
   - xeus=0.19.2
-  - libzmq=4.2.5
   - cppzmq=4.3.0
   - xtl=0.6.4
   - nlohmann_json=3.6.1
