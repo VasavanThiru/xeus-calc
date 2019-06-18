@@ -1,0 +1,6 @@
+name: xeus-calc
+channels:
+  - conda-forge
+dependencies:
+  - xeus=0.19.2
+  - cmake
